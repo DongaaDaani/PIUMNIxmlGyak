@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<konferencia>
+  <cim>   Miskolci Egyetem </cim>
+  
+  <eloado>
+    <nev> László </nev>
+    <datum> 2020.09.15</datum>
+    <helyszin> Gyori Kapu 44 </helyszin>
+    <adoszam> 04254623456 </adoszam>
+  </eloado>
+  
+  <halgatók>
+    <halgató id="1">
+      <nev>Donga Daniel</nev>
+      <lakcim>Miskolc Gyori Kapi</lakcim>
+    </halgató>
+    <halgató id="2">
+      <nev>Donga Péter</nev>
+      <lakcim>Miskolc Gyori Kapi</lakcim>
+    </halgató>
+  </halgatók>
+
+</konferencia>

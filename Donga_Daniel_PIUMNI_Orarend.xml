@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<orarend>
+  <ora id="1" tipus="eloadas">
+  <targy>XML</targy>
+  <szak>Programtervező informatikus</szak>
+  <idopont>
+    <tol>8:00</tol>
+    <ig>10:00</ig>
+	<nap>Hetfő</nap>
+  </idopont>
+  <helyszin>Miskolci Egyetem </helyszin>
+  <oktato>Péter</oktato>
+  </ora>
+
+  <ora id="2" tipus="eloadas">
+    <targy>Web Tech</targy>
+    <szak>Programtervező informatikus</szak>
+    <idopont>
+      <tol>10:00</tol>
+      <ig>12:00</ig>
+	  <nap>Hetfő</nap>
+    </idopont>
+    <helyszin>Miskolci Egyetem </helyszin>
+    <oktato>Lajos</oktato>
+  </ora>
+
+  <ora id="3" tipus="gyakorlat">
+    <targy>Adatstruktura</targy>
+    <szak>Programtervező informatikus</szak>
+    <idopont>
+      <tol>12:00</tol>
+      <ig>14:00</ig>
+	  <nap>Hetfő</nap>
+    </idopont>
+    <helyszin>Miskolci Egyetem </helyszin>
+    <oktato>Sándor</oktato>
+  </ora>
+  
+</orarend>

@@ -1,0 +1,15 @@
+p{
+    color: white;
+}
+ul{
+    color: white;
+}
+li{
+    color: white;
+}
+body{
+   
+    background-image: url(back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
