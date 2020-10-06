@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nevjegykartyak>
+  <nevjegykartya id="1">
+    <nev>Donga Daniel </nev>
+    <ceg>
+      <cim>
+        <iranyitoszam>2456</iranyitoszam>
+        <varos>Miskolc</varos>
+        <utca>Evosoft</utca>
+        <hazszam>11.porta</hazszam>
+      </cim>
+      <nev>Bosch</nev>
+      <telefonszam korzet="46">433-535</telefonszam>
+      <weblap>www.iit.eu</weblap>
+      <email>Software@iit.hu</email>
+    </ceg>
+    <beosztas>Developer</beosztas>
+    <telefonszam korzet="3234" >23567456</telefonszam>
+    <email>dongadani@gmail.com</email>
+  </nevjegykartya>
+</nevjegykartyak>
