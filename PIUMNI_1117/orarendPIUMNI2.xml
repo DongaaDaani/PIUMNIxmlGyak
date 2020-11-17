@@ -1,0 +1,27 @@
+<?xml version = "1.0"?>  
+<?xml-stylesheet type = "text/xsl" href = "orarend.xsl"?>   
+<orarend>
+  <ora id="1">
+  <targy>XML</targy>
+  <szak>Programtervező informatikus</szak>
+ 
+  <helyszin>Miskolci Egyetem </helyszin>
+  <oktato>Péter</oktato>
+  </ora>
+
+  <ora id="2" >
+    <targy>Web Tech</targy>
+    <szak>Programtervező informatikus</szak>
+    
+    <helyszin>Miskolci Egyetem </helyszin>
+    <oktato>Lajos</oktato>
+  </ora>
+
+  <ora id="3" >
+    <targy>Adatstruktura</targy>
+    <szak>Programtervező informatikus</szak>
+   
+    <helyszin>Miskolci Egyetem </helyszin>
+    <oktato>Sándor</oktato>
+  </ora>
+  
