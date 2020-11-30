@@ -1,0 +1,69 @@
+﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tulajdonosok">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="tulajdonos" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="nev">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:string" name="vezeteknev"/>
+													<xs:element type="xs:string" name="keresztnev"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element type="xs:byte" name="eletkora"/>
+										<xs:element type="xs:byte" name="jarmuvekszama"/>
+										<xs:element type="xs:long" name="telefonszama"/>
+									</xs:sequence>
+									<xs:attribute type="xs:string" name="id" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="jarmuvek">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="jarmu" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="fogyasztas"/>
+										<xs:element type="xs:string" name="tipus"/>
+										<xs:element type="xs:string" name="szine"/>
+										<xs:element type="xs:string" name="futottkm"/>
+										<xs:element type="xs:short" name="gyartasiev"/>
+									</xs:sequence>
+									<xs:attribute type="xs:string" name="rsz" use="optional"/>
+									<xs:attribute type="xs:string" name="gyartoid" use="optional"/>
+									<xs:attribute type="xs:string" name="tulajid" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="gyartok">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="gyarto" maxOccurs="unbounded" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="nev"/>
+										<xs:element type="xs:short" name="ev"/>
+										<xs:element type="xs:string" name="telephely"/>
+									</xs:sequence>
+									<xs:attribute type="xs:string" name="id" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute type="xs:string" name="id"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
