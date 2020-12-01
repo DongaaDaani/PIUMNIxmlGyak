@@ -27,13 +27,13 @@ public class DOMModifyPIUMNI {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(new File("src/hu/domparse/Clpe25/XMLCLPE25.updated.xml"));
+        StreamResult result = new StreamResult(new File("XMLPIUMNI.updated.xml"));
         transformer.transform(source, result);
 	}
 	
 	public static void UpdateCar(Document doc) throws TransformerException {
 
-		System.out.println("\nMelyik jtkost szeretn mdostani?\n");
+		System.out.println("\nMelyik jarmuvet szeretn mdostani?\n");
 
 		DomReadPIUMNI.ReadCar(doc);
 
