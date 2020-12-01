@@ -231,4 +231,65 @@ public class DOMModifyPIUMNI {
 		CreateXML(doc);
 	}
 	
+	
+	public static void Updatevezeto(Document doc) throws TransformerException {
+
+		System.out.println("\nMelyik vezetot szeretne modositani ?\n");
+
+		DomReadPIUMNI.Readtulajdonos(doc);
+		
+		String id = ReadId();
+
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Nev : ");
+		String nev = sc.nextLine();
+		System.out.print("Tapasztalat: ");
+		String tapasztalat = sc.nextLine();
+		System.out.print("Fizetes : ");
+		String salary = sc.nextLine();
+	
+		UpdateTulajdonosById(doc, id, nev, tapasztalat, salary);
+		
+	}
+
+	public static void UpdateTulajdonosById(Document doc, String id, String age, String vehiclenumber, String phonenumber) throws TransformerException {
+
+		NodeList nList = doc.getElementsByTagName("cegvezeto");
+		
+		for (int i = 0; i < nList.getLength(); i++) {
+
+			Node nNode = nList.item(i);
+
+			NodeList cList = nList.item(i).getChildNodes();
+			
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+				Element element = (Element) nNode;
+
+				String tulajid = element.getAttribute("id");
+
+				if (tulajid.equals(id)) {
+
+					Node node1 = element.getElementsByTagName("nev").item(0);
+					node1.setTextContent(age);
+
+					Node node2 = element.getElementsByTagName("tapasztalat").item(0);
+					node2.setTextContent(vehiclenumber);
+					
+					Node node3 = element.getElementsByTagName("fizetes").item(0);
+					node3.setTextContent(phonenumber);
+			
+
+					System.out.println("Tulajdonos id:" + id + "\tNev: " + node1.getTextContent() + "\ttapasztalat: " + node2.getTextContent()
+							+ "\tfizetes: " + node3.getTextContent());
+										
+					System.out.println("\nModositas sikeresen megtortent \n");
+					
+				}
+			}
+		}
+		
+		CreateXML(doc);
+	}
+	
 }

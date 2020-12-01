@@ -34,11 +34,11 @@
 
 <jarmuvek>
 	<jarmu gyartoid="gyarto2" rsz="ETR-235" tulajid="tulaj2">
-		<fogyasztas>13L/100</fogyasztas>
+		<fogyasztas>8l/100</fogyasztas>
 		<tipus>Audi R8</tipus>
-		<szine>Gray</szine>
-		<futottkm>90,000</futottkm>
-		<gyartasiev>2013</gyartasiev>
+		<szine>Fehér</szine>
+		<futottkm>80,000km</futottkm>
+		<gyartasiev>2012</gyartasiev>
 	</jarmu>
 
 	<jarmu gyartoid="gyarto3" rsz="RTT-745" tulajid="tulaj1">
@@ -91,9 +91,41 @@
 			<ev>1966</ev>
 			<telephely>Usa</telephely>
 		</gyarto>
-
-
-
-
 	</gyartok>
+
+	<motorok>
+		<motor id="1">
+			<nev>Siemens</nev>
+			<gyartasiev>2002</gyartasiev>
+			<tipusa>Dizel</tipusa>
+		</motor>
+		<motor id="2">
+			<nev>Volvo</nev>
+			<gyartasiev>1988</gyartasiev>
+			<tipusa>Benzin</tipusa>
+		</motor>
+		<motor id="3">
+			<nev>Tesla</nev>
+			<gyartasiev>2011</gyartasiev>
+			<tipusa>Elekttromos</tipusa>
+		</motor>
+	</motorok>
+
+	<cegvezetok>
+		<cegvezeto id="1">
+			<nev>Béla</nev>
+			<tapasztalat>8 év</tapasztalat>
+			<fizetés>1,200,000 ft</fizetés>
+		</cegvezeto>
+		<cegvezeto id="2">
+			<nev>Pista</nev>
+			<tapasztalat>16 év</tapasztalat>
+			<fizetés>1,800,000 ft</fizetés>
+		</cegvezeto>
+		<cegvezeto id="3">
+			<nev>Béla</nev>
+			<tapasztalat>12 év</tapasztalat>
+			<fizetés>1,130,000 ft</fizetés>
+		</cegvezeto>
+	</cegvezetok>
 </data>

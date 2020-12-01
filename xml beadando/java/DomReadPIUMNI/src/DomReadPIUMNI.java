@@ -35,7 +35,7 @@ public class DomReadPIUMNI {
 	        sae.printStackTrace();
 	       }
 	}
-
+//Eldöntheted, hogy módosítani, vagy olvasni szeretnéd az xml-t
 	public static void Action(Document doc) throws TransformerException {
 	
 		System.out.println("Press 1 to read data");
@@ -55,32 +55,33 @@ public class DomReadPIUMNI {
 		}
 
 	}
-
+//Bekér egy számot, amely annak a sorszámát, amelyik tag-en belül te olvasni szeretnéd az adatokat
 	public static int ReadCategory() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Adja meg a sorszamot:");
 		int readCategory = scan.nextInt();
 		return readCategory;
 	}
-	
+	//bekéri az adatot, hogy milyen tipusu részt szeretne modositani majd meghiv egy methodust
+	//benne egy switch case-el , ami  meghiv szintén egy másik osztályban lévõ methodust 
 	public static void Update(Document doc) throws TransformerException {
 		System.out.println(" XML Editing.. \n");
 		System.out.println("What do you want to edit ? ");
-		System.out.println("1. Car\n2. Manufacture \n3. owner ");
+		System.out.println("1. Car\n2. Manufacture \n3. owner \n 4.Vezeto \n 5. motor ");
 		int category = 0;
 		category = ReadCategory();
 		ShowElementUpdates(category, doc);
 	}
-	
+	//olvaso methodus
 	public static void Read(Document doc) {
 		System.out.println("XML reading.. \n");
 		System.out.println("What do you want to read? ");
-		System.out.println("1. Car\\n2. Manufacture \\n3. owner");
+		System.out.println("1. Car \n 2. Manufacture \n 3. owner \n 4. Motor \n 5. vezetõ ");
 		int category = 0;
 		category = ReadCategory();
 		ShowCategoryElements(category, doc);
 	}
-
+//itt donti el a program, hogy beadott input alapján mit hivjon meg.
 	public static void ShowCategoryElements(int category, Document doc) {
 		switch (category) {
 		case 1:
@@ -92,28 +93,42 @@ public class DomReadPIUMNI {
 		case 3:
 			Readtulajdonos(doc);
 			break;
+		case 4:
+			Readmotor(doc);
+			break;
+		case 5:
+			Readvezeto(doc);
+			break;
 		default:
 			int newCategory = ReadCategory();
 			ShowCategoryElements(newCategory, doc);
 			break;
 		}
 	}
-
+//meghivja a másik osztályban megirt update methodusokat, ez is a beadott input alapján
 	public static void ShowElementUpdates(int category, Document doc) throws TransformerException {
 		switch (category) {
 		case 1:
+			//A felhasználó a 1.es gombot megadva modositja a kocsit
 			DOMModifyPIUMNI.UpdateCar(doc);
 			break;
+			// A felhasználó a 2.es gombot megadva modositja a gyárat
 		case 2:
 			DOMModifyPIUMNI.UpdateGyar(doc);
 			break;
+			//A felhasználó a 3.as gombot megadva modositja a tulajdonost
 		case 3:
 			DOMModifyPIUMNI.UpdateTulajdonos(doc);
 			break;
+			//A felhasználó a 3.as gombot megadva modositja a vezetot
+		case 4:
+			DOMModifyPIUMNI.Updatevezeto(doc);
+			break;
 		}
+		
 	}
 	
-	
+	//kiolvassa a tulajdonost
 	public static void Readtulajdonos(Document doc) {
 
 		NodeList nList = doc.getElementsByTagName("tulajdonos");
@@ -159,7 +174,71 @@ public class DomReadPIUMNI {
 			}
 		}
 	}
+	
+	
 
+	//kiolvassa a gyártot
+		public static void Readmotor(Document doc) {
+
+			NodeList nList = doc.getElementsByTagName("motor");
+
+			for (int i = 0; i < nList.getLength(); i++) {
+
+				Node nNode = nList.item(i);
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element element = (Element) nNode;
+
+					String gyartoid = element.getAttribute("id");
+
+					Node node1 = element.getElementsByTagName("nev").item(0);
+					String name = node1.getTextContent();
+
+					Node node2 = element.getElementsByTagName("gyartasiev").item(0);
+					String year = node2.getTextContent();
+
+					Node node3 = element.getElementsByTagName("tipusa").item(0);
+					String telephely = node3.getTextContent();
+
+					System.out.println("Gyarto id:" + gyartoid + "\tNev: " + name + "\tÉv: " + year
+							+ "\tTelephely: " + telephely);
+				}
+			}
+		}
+		
+		
+		public static void Readvezeto(Document doc) {
+
+			NodeList nList = doc.getElementsByTagName("cegvezeto");
+
+			for (int i = 0; i < nList.getLength(); i++) {
+
+				Node nNode = nList.item(i);
+
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element element = (Element) nNode;
+
+					String vezetoid = element.getAttribute("id");
+
+					Node node1 = element.getElementsByTagName("nev").item(0);
+					String name = node1.getTextContent();
+
+					Node node2 = element.getElementsByTagName("tapasztalat").item(0);
+					String tapasztalat = node2.getTextContent();
+
+					Node node3 = element.getElementsByTagName("fizetés").item(0);
+					String fizetes = node3.getTextContent();
+
+					System.out.println("Gyarto id:" + vezetoid + "\tNev: " + name + "\tTapasztalat: " + tapasztalat
+							+ "\tFizetes: " + fizetes);
+				}
+			}
+		}
+	
+	
+//kiolvassa a gyártot
 	public static void ReadGyar(Document doc) {
 
 		NodeList nList = doc.getElementsByTagName("gyarto");
@@ -188,7 +267,7 @@ public class DomReadPIUMNI {
 			}
 		}
 	}
-
+//Kiolvasa a jármûvet
 	public static void ReadCar(Document doc) {
 
 		NodeList nList = doc.getElementsByTagName("jarmu");
