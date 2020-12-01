@@ -92,9 +92,41 @@
 			<ev>1966</ev>
 			<telephely>Usa</telephely>
 		</gyarto>
-
-
-
-
 	</gyartok>
+
+	<motorok>
+		<motor id="1">
+			<nev>Siemens</nev>
+			<gyartasiev>2002</gyartasiev>
+			<tipusa>Dizel</tipusa>
+		</motor>
+		<motor id="2">
+			<nev>Volvo</nev>
+			<gyartasiev>1988</gyartasiev>
+			<tipusa>Benzin</tipusa>
+		</motor>
+		<motor id="3">
+			<nev>Tesla</nev>
+			<gyartasiev>2011</gyartasiev>
+			<tipusa>Elekttromos</tipusa>
+		</motor>
+	</motorok>
+
+	<cegvezetok>
+		<cegvezeto id="1">
+			<nev>Béla</nev>
+			<tapasztalat>8 év</tapasztalat>
+			<fizetés>1,200,000 ft</fizetés>
+		</cegvezeto>
+		<cegvezeto id="2">
+			<nev>Pista</nev>
+			<tapasztalat>16 év</tapasztalat>
+			<fizetés>1,800,000 ft</fizetés>
+		</cegvezeto>
+		<cegvezeto id="3">
+			<nev>Béla</nev>
+			<tapasztalat>12 év</tapasztalat>
+			<fizetés>1,130,000 ft</fizetés>
+		</cegvezeto>
+	</cegvezetok>
 </data>

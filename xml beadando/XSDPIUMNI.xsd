@@ -1,69 +1,130 @@
-﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="data">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="tulajdonosok">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="tulajdonos" maxOccurs="unbounded" minOccurs="0">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="nev">
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element type="xs:string" name="vezeteknev"/>
-													<xs:element type="xs:string" name="keresztnev"/>
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-										<xs:element type="xs:byte" name="eletkora"/>
-										<xs:element type="xs:byte" name="jarmuvekszama"/>
-										<xs:element type="xs:long" name="telefonszama"/>
-									</xs:sequence>
-									<xs:attribute type="xs:string" name="id" use="optional"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="jarmuvek">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="jarmu" maxOccurs="unbounded" minOccurs="0">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="fogyasztas"/>
-										<xs:element type="xs:string" name="tipus"/>
-										<xs:element type="xs:string" name="szine"/>
-										<xs:element type="xs:string" name="futottkm"/>
-										<xs:element type="xs:short" name="gyartasiev"/>
-									</xs:sequence>
-									<xs:attribute type="xs:string" name="rsz" use="optional"/>
-									<xs:attribute type="xs:string" name="gyartoid" use="optional"/>
-									<xs:attribute type="xs:string" name="tulajid" use="optional"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="gyartok">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="gyarto" maxOccurs="unbounded" minOccurs="0">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="nev"/>
-										<xs:element type="xs:short" name="ev"/>
-										<xs:element type="xs:string" name="telephely"/>
-									</xs:sequence>
-									<xs:attribute type="xs:string" name="id" use="optional"/>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-						<xs:attribute type="xs:string" name="id"/>
-					</xs:complexType>
-				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="data" xmlns:ns1="data" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+  <xs:element name="data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ns1:tulajdonosok"/>
+        <xs:element ref="ns1:jarmuvek"/>
+        <xs:element ref="ns1:gyartok"/>
+        <xs:element ref="ns1:motorok"/>
+        <xs:element ref="ns1:cegvezetok"/>
+      </xs:sequence>
+      <xs:attribute ref="xsi:schemaLocation" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tulajdonosok">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ns1:tulajdonos"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tulajdonos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ns1:nev"/>
+        <xs:element ref="ns1:eletkora"/>
+        <xs:element ref="ns1:jarmuvekszama"/>
+        <xs:element ref="ns1:telefonszama"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eletkora" type="xs:integer"/>
+  <xs:element name="jarmuvekszama" type="xs:integer"/>
+  <xs:element name="telefonszama" type="xs:integer"/>
+  <xs:element name="jarmuvek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ns1:jarmu"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="jarmu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ns1:fogyasztas"/>
+        <xs:element ref="ns1:tipus"/>
+        <xs:element ref="ns1:szine"/>
+        <xs:element ref="ns1:futottkm"/>
+        <xs:element ref="ns1:gyartasiev"/>
+      </xs:sequence>
+      <xs:attribute name="gyartoid" use="required" type="xs:NCName"/>
+      <xs:attribute name="rsz" use="required" type="xs:NCName"/>
+      <xs:attribute name="tulajid" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fogyasztas" type="xs:string"/>
+  <xs:element name="tipus" type="xs:string"/>
+  <xs:element name="szine" type="xs:NCName"/>
+  <xs:element name="futottkm" type="xs:string"/>
+  <xs:element name="gyartok">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ns1:gyarto"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gyarto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ns1:nev"/>
+        <xs:element ref="ns1:ev"/>
+        <xs:element ref="ns1:telephely"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ev" type="xs:integer"/>
+  <xs:element name="telephely" type="xs:NCName"/>
+  <xs:element name="motorok">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ns1:motor"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="motor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ns1:nev"/>
+        <xs:element ref="ns1:gyartasiev"/>
+        <xs:element ref="ns1:tipusa"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tipusa" type="xs:NCName"/>
+  <xs:element name="cegvezetok">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ns1:cegvezeto"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cegvezeto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ns1:nev"/>
+        <xs:element ref="ns1:tapasztalat"/>
+        <xs:element ref="ns1:fizetés"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tapasztalat" type="xs:string"/>
+  <xs:element name="fizetés" type="xs:string"/>
+  <xs:element name="nev">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns1:keresztnev"/>
+        <xs:element ref="ns1:vezeteknev"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="keresztnev" type="xs:NCName"/>
+  <xs:element name="vezeteknev" type="xs:NCName"/>
+  <xs:element name="gyartasiev" type="xs:integer"/>
 </xs:schema>
