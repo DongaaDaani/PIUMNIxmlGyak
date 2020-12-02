@@ -44,9 +44,11 @@ public class DomReadPIUMNI {
 
 		switch (action) {
 		case 1:
+			//1-es gomb megnyomása után olvas, az a methodus van meghivva
 			Read(doc);
 			break;
 		case 2:
+			//2-es gomb esetén update-el
 			Update(doc);
 			break;
 		default:
@@ -67,7 +69,7 @@ public class DomReadPIUMNI {
 	public static void Update(Document doc) throws TransformerException {
 		System.out.println(" XML Editing.. \n");
 		System.out.println("What do you want to edit ? ");
-		System.out.println("1. Car\n2. Manufacture \n3. owner \n 4.Vezeto \n 5. motor ");
+		System.out.println("1. Car\n2. Manufacture \n3. owner \n 4.Cégvezetõ \n 5. motor ");
 		int category = 0;
 		category = ReadCategory();
 		ShowElementUpdates(category, doc);
@@ -76,7 +78,7 @@ public class DomReadPIUMNI {
 	public static void Read(Document doc) {
 		System.out.println("XML reading.. \n");
 		System.out.println("What do you want to read? ");
-		System.out.println("1. Car \n 2. Manufacture \n 3. owner \n 4. Motor \n 5. vezetõ ");
+		System.out.println("1. Car \n 2. Manufacture \n 3. owner \n 4. Motor \n 5. Cégvezetõ ");
 		int category = 0;
 		category = ReadCategory();
 		ShowCategoryElements(category, doc);
@@ -120,7 +122,7 @@ public class DomReadPIUMNI {
 		case 3:
 			DOMModifyPIUMNI.UpdateTulajdonos(doc);
 			break;
-			//A felhasználó a 3.as gombot megadva modositja a vezetot
+			//A felhasználó a 4.as gombot megadva modositja a vezetot
 		case 4:
 			DOMModifyPIUMNI.Updatevezeto(doc);
 			break;
@@ -201,7 +203,7 @@ public class DomReadPIUMNI {
 					Node node3 = element.getElementsByTagName("tipusa").item(0);
 					String telephely = node3.getTextContent();
 
-					System.out.println("Gyarto id:" + gyartoid + "\tNev: " + name + "\tÉv: " + year
+					System.out.println("Motor id:" + gyartoid + "\tNev: " + name + "\tÉv: " + year
 							+ "\tTelephely: " + telephely);
 				}
 			}
@@ -231,7 +233,7 @@ public class DomReadPIUMNI {
 					Node node3 = element.getElementsByTagName("fizetés").item(0);
 					String fizetes = node3.getTextContent();
 
-					System.out.println("Gyarto id:" + vezetoid + "\tNev: " + name + "\tTapasztalat: " + tapasztalat
+					System.out.println("Id:" + vezetoid + "\tNev: " + name + "\tTapasztalat: " + tapasztalat
 							+ "\tFizetes: " + fizetes);
 				}
 			}

@@ -30,7 +30,7 @@ public class DOMModifyPIUMNI {
         StreamResult result = new StreamResult(new File("XMLPIUMNI.updated.xml"));
         transformer.transform(source, result);
 	}
-	
+	//Kocsi modositás
 	public static void UpdateCar(Document doc) throws TransformerException {
 
 		System.out.println("\nMelyik jarmuvet szeretn mdostani?\n");
@@ -38,7 +38,7 @@ public class DOMModifyPIUMNI {
 		DomReadPIUMNI.ReadCar(doc);
 
 		String id = ReadId();
-
+//bekéri a felhasználótól a módosításhoz szükséges adatokat.
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Jármû fogyasztasa: ");
 		String fogyasztas = sc.nextLine();
@@ -50,14 +50,14 @@ public class DOMModifyPIUMNI {
 		String futottkm = sc.nextLine();
 		System.out.print("Gyartasi eve : ");
 		String year = sc.nextLine();
-		
+		//meghivja a beadott adatokkal a modositás id alapján methodust
 		UpdateCarById(doc, id, fogyasztas, type, color, futottkm, year);
 	}
 
 	public static void UpdateCarById(Document doc, String id, String fogyasztas, String type, String color, String futottkm, String gyartasiev) throws TransformerException {
-
+//kiolvassa a jarmu tag-et
 		NodeList nList = doc.getElementsByTagName("jarmu");
-		
+		//itt végig megy a listán
 		for (int i = 0; i < nList.getLength(); i++) {
 
 			Node nNode = nList.item(i);
@@ -67,12 +67,12 @@ public class DOMModifyPIUMNI {
 				Element element = (Element) nNode;
 
 				String rsz = element.getAttribute("rsz");
-
+//a beadott rendszám alapján belép ebbe a ciklusba egyezés alapján
 				if (rsz.equals(id)) {
 
 					String tulajid = element.getAttribute("tulajid");
 					String gyartoid = element.getAttribute("gyartoid");
-					
+					//átadja a paramétereket, ezzel módosul
 					Node node1 = element.getElementsByTagName("fogyasztas").item(0);
 					node1.setTextContent(fogyasztas);
 
@@ -87,7 +87,7 @@ public class DOMModifyPIUMNI {
 					
 					Node node5 = element.getElementsByTagName("gyartasiev").item(0);
 					node5.setTextContent(gyartasiev);
-					
+					//kiirja consolba.
 					System.out.println(" Rendszam :" + rsz + "\tTulajID id:" + tulajid + "\tGyarto id:"
 							+ gyartoid +  "\tFogyasztas: " + node1.getTextContent() + "\tTipus: " + node2.getTextContent()
 							+ "\tSzine: " + node3.getTextContent() + "\tfutottkm:" + node4.getTextContent() + "\tgyartasi ev: " + node5.getTextContent());
@@ -100,7 +100,7 @@ public class DOMModifyPIUMNI {
 		
 		CreateXML(doc);
 	}
-	
+	//Gyár módosítása
 	public static void UpdateGyar(Document doc) throws TransformerException {
 	
 		System.out.println("\nMelyik gyartót szeretné módosítani?\n");
@@ -108,7 +108,7 @@ public class DOMModifyPIUMNI {
 		DomReadPIUMNI.ReadGyar(doc);
 
 		String id = ReadId();
-
+//bekéri az adatokat console-bol
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Nev: ");
 		String name = sc.nextLine();
@@ -116,14 +116,14 @@ public class DOMModifyPIUMNI {
 		String year = sc.nextLine();
 		System.out.print("Telephely: ");
 		String telephely = sc.nextLine();
-
+//meghivja a beadott paraméterek alapján a modositás id alapján methodust.
 		UpdategyarById(doc, id, name, year, telephely);		
 	}
 
 	public static void UpdategyarById(Document doc, String id, String name, String year, String telephely) throws TransformerException {
 
 		NodeList nList = doc.getElementsByTagName("gyarto");
-		
+		//végig megy a listán 
 		for (int i = 0; i < nList.getLength(); i++) {
 
 			Node nNode = nList.item(i);
@@ -133,7 +133,7 @@ public class DOMModifyPIUMNI {
 				Element element = (Element) nNode;
 
 				String gyartoid = element.getAttribute("id");
-
+//ha a beadott id megegyezik akkor belép a methodustba és tag-enként átadja az értéket
 				if (gyartoid.equals(id)) {
 
 					Node node1 = element.getElementsByTagName("nev").item(0);
@@ -164,7 +164,7 @@ public class DOMModifyPIUMNI {
 		DomReadPIUMNI.Readtulajdonos(doc);
 		
 		String id = ReadId();
-
+//beolvassa az adatokat a felhasználótól
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Age : ");
 		String age = sc.nextLine();
@@ -176,15 +176,15 @@ public class DOMModifyPIUMNI {
 		String firstname = sc.nextLine();
 		System.out.print("Lastname: ");
 		String lastname = sc.nextLine();
-	
+	//meghivja a beadott adatokkal a modositás id alapján methodust.
 		UpdateTulajdonosById(doc, id, age, vehiclenumber, phonenumber, firstname, lastname);
 		
 	}
-
+//Id alapján módosítja a tulajdonost
 	public static void UpdateTulajdonosById(Document doc, String id, String age, String vehiclenumber, String phonenumber, String firstname, String lastname) throws TransformerException {
 
 		NodeList nList = doc.getElementsByTagName("tulajdonos");
-		
+		//végig megy a listán majd ..
 		for (int i = 0; i < nList.getLength(); i++) {
 
 			Node nNode = nList.item(i);
@@ -196,9 +196,9 @@ public class DOMModifyPIUMNI {
 				Element element = (Element) nNode;
 
 				String tulajid = element.getAttribute("id");
-
+//megvizsgálja a beadott id alapján melyiket kell modositani.
 				if (tulajid.equals(id)) {
-
+//átadja aaz értékeket.
 					Node node1 = element.getElementsByTagName("eletkora").item(0);
 					node1.setTextContent(age);
 
@@ -234,9 +234,9 @@ public class DOMModifyPIUMNI {
 	
 	public static void Updatevezeto(Document doc) throws TransformerException {
 
-		System.out.println("\nMelyik vezetot szeretne modositani ?\n");
-
-		DomReadPIUMNI.Readtulajdonos(doc);
+		System.out.println("\nMelyik Cegvezetot szeretne modositani ?\n");
+//kiolvassa a cégvezetõk methodust.
+		DomReadPIUMNI.Readvezeto(doc);
 		
 		String id = ReadId();
 
@@ -247,15 +247,16 @@ public class DOMModifyPIUMNI {
 		String tapasztalat = sc.nextLine();
 		System.out.print("Fizetes : ");
 		String salary = sc.nextLine();
-	
-		UpdateTulajdonosById(doc, id, nev, tapasztalat, salary);
+	//meghivja a megadott értékkekkel az Id alapján történõ modosítást
+		UpdateCegvezetoById(doc, id, nev, tapasztalat, salary);
 		
 	}
-
-	public static void UpdateTulajdonosById(Document doc, String id, String age, String vehiclenumber, String phonenumber) throws TransformerException {
+	
+//vegvezeto modositása a megadott id alapján
+	public static void UpdateCegvezetoById(Document doc, String id, String name, String tapasztalat, String salary) throws TransformerException {
 
 		NodeList nList = doc.getElementsByTagName("cegvezeto");
-		
+		//végig megy a listán
 		for (int i = 0; i < nList.getLength(); i++) {
 
 			Node nNode = nList.item(i);
@@ -267,21 +268,22 @@ public class DOMModifyPIUMNI {
 				Element element = (Element) nNode;
 
 				String tulajid = element.getAttribute("id");
-
+//megvizsgálja a beadott id alapján melyiket kell modositani.
 				if (tulajid.equals(id)) {
-
+//átadja aaz értékeket.
 					Node node1 = element.getElementsByTagName("nev").item(0);
-					node1.setTextContent(age);
+					node1.setTextContent(name);
 
 					Node node2 = element.getElementsByTagName("tapasztalat").item(0);
-					node2.setTextContent(vehiclenumber);
+					node2.setTextContent(tapasztalat);
 					
-					Node node3 = element.getElementsByTagName("fizetes").item(0);
-					node3.setTextContent(phonenumber);
+					Node node3 = element.getElementsByTagName("fizetés").item(0);
+					node3.setTextContent(salary);
 			
+										
 
-					System.out.println("Tulajdonos id:" + id + "\tNev: " + node1.getTextContent() + "\ttapasztalat: " + node2.getTextContent()
-							+ "\tfizetes: " + node3.getTextContent());
+					System.out.println("Cégvezetõ id:" + id + "\tNév: " + node1.getTextContent() + "\tTapasztalat: " + node2.getTextContent()
+							+ "\tfizetés: " + node3.getTextContent());
 										
 					System.out.println("\nModositas sikeresen megtortent \n");
 					
@@ -291,5 +293,6 @@ public class DOMModifyPIUMNI {
 		
 		CreateXML(doc);
 	}
-	
+
+
 }
